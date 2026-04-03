@@ -2,24 +2,20 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
-    "declaration": false,
+    "declaration": true,
     "experimentalDecorators": true,
     "lib": [
       "dom",
       "es2022"
     ],
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "module": "esnext",
     "target": "es2022",
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "rootDir": "./",
     "jsx": "react",
     "jsxFactory": "h",
-    "jsxFragmentFactory": "h.Fragment",
-    "types": [
-      "@stencil/vitest/globals"
-    ]
   },
   "include": [
     "src"
