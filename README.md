@@ -223,8 +223,8 @@ Or use the built-in dark theme:
 
 ### Setup
 ```bash
-git clone https://github.com/ranidu/zafire-search.git
-cd zafire-search
+git clone https://github.com/ranidu/zafire-smart-search.git
+cd zafire-smart-search
 npm install
 ```
 
@@ -254,7 +254,7 @@ npm run generate
 
 ### Project Structure
 ```
-zafire-search/
+zafire-smart-search/
 ├── src/
 │   ├── components/
 │   │   ├── smart-search/       # Parent component — owns all state
