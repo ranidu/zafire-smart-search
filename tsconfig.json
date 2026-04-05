@@ -12,6 +12,7 @@
     "module": "esnext",
     "target": "es2022",
     "strict": true,
+    "strictPropertyInitialization":false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",

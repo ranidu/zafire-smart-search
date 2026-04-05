@@ -14,9 +14,15 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
       dir: 'www',
+      indexHtml: 'demo/index.html', // ← point to demo folder
+      copy: [
+        { src: '../demo/index.html', dest: 'index.html' },
+        { src: '../demo/demo.css', dest: 'demo.css' },
+        { src: '../demo/demo.js', dest: 'demo.js' },
+      ],
     },
   ],
   testing: {
-    browserHeadless: true
-  }
+    browserHeadless: true,
+  },
 };

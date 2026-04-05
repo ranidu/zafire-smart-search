@@ -5,64 +5,269 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { FilterOption, SearchChangeEvent, SearchFilterEvent, SearchResult, SearchSelectEvent } from "./types";
+export { FilterOption, SearchChangeEvent, SearchFilterEvent, SearchResult, SearchSelectEvent } from "./types";
 export namespace Components {
-    interface MyComponent {
+    interface SearchDropdown {
         /**
-          * The first name
+          * @default ''
          */
-        "first"?: string;
+        "anchorSelector": string;
         /**
-          * The last name
+          * @default false
          */
-        "last"?: string;
+        "isOpen": boolean;
         /**
-          * The middle name
+          * @default ''
          */
-        "middle"?: string;
+        "query": string;
+        /**
+          * @default []
+         */
+        "results": Array<SearchResult>;
+    }
+    interface SearchFilter {
+        /**
+          * @default []
+         */
+        "filters": FilterOption[];
+    }
+    interface SearchInput {
+        /**
+          * @default 'Search...'
+         */
+        "placeholder": string;
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
+    interface SmartSearch {
+        /**
+          * @default 300
+         */
+        "debounceMs": number;
+        /**
+          * @default []
+         */
+        "filters": FilterOption[];
+        /**
+          * @default 10
+         */
+        "maxResults": number;
+        /**
+          * @default 'Search...'
+         */
+        "placeholder": string;
+        /**
+          * @default []
+         */
+        "results": Array<SearchResult>;
+        /**
+          * @default 'light'
+         */
+        "theme": 'light' | 'dark';
     }
 }
+export interface SearchDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSearchDropdownElement;
+}
+export interface SearchFilterCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSearchFilterElement;
+}
+export interface SearchInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSearchInputElement;
+}
+export interface SmartSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSmartSearchElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLSearchDropdownElementEventMap {
+        "resultSelect": SearchResult;
+        "dropdownClose": void;
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    interface HTMLSearchDropdownElement extends Components.SearchDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSearchDropdownElementEventMap>(type: K, listener: (this: HTMLSearchDropdownElement, ev: SearchDropdownCustomEvent<HTMLSearchDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSearchDropdownElementEventMap>(type: K, listener: (this: HTMLSearchDropdownElement, ev: SearchDropdownCustomEvent<HTMLSearchDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSearchDropdownElement: {
+        prototype: HTMLSearchDropdownElement;
+        new (): HTMLSearchDropdownElement;
+    };
+    interface HTMLSearchFilterElementEventMap {
+        "filterChange": FilterOption | null;
+    }
+    interface HTMLSearchFilterElement extends Components.SearchFilter, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSearchFilterElementEventMap>(type: K, listener: (this: HTMLSearchFilterElement, ev: SearchFilterCustomEvent<HTMLSearchFilterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSearchFilterElementEventMap>(type: K, listener: (this: HTMLSearchFilterElement, ev: SearchFilterCustomEvent<HTMLSearchFilterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSearchFilterElement: {
+        prototype: HTMLSearchFilterElement;
+        new (): HTMLSearchFilterElement;
+    };
+    interface HTMLSearchInputElementEventMap {
+        "inputChange": string;
+        "inputClear": void;
+    }
+    interface HTMLSearchInputElement extends Components.SearchInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSearchInputElementEventMap>(type: K, listener: (this: HTMLSearchInputElement, ev: SearchInputCustomEvent<HTMLSearchInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSearchInputElementEventMap>(type: K, listener: (this: HTMLSearchInputElement, ev: SearchInputCustomEvent<HTMLSearchInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSearchInputElement: {
+        prototype: HTMLSearchInputElement;
+        new (): HTMLSearchInputElement;
+    };
+    interface HTMLSmartSearchElementEventMap {
+        "searchChange": SearchChangeEvent;
+        "searchSelect": SearchSelectEvent;
+        "searchFilter": SearchFilterEvent;
+        "searchClear": void;
+    }
+    interface HTMLSmartSearchElement extends Components.SmartSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSmartSearchElementEventMap>(type: K, listener: (this: HTMLSmartSearchElement, ev: SmartSearchCustomEvent<HTMLSmartSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSmartSearchElementEventMap>(type: K, listener: (this: HTMLSmartSearchElement, ev: SmartSearchCustomEvent<HTMLSmartSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSmartSearchElement: {
+        prototype: HTMLSmartSearchElement;
+        new (): HTMLSmartSearchElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "search-dropdown": HTMLSearchDropdownElement;
+        "search-filter": HTMLSearchFilterElement;
+        "search-input": HTMLSearchInputElement;
+        "smart-search": HTMLSmartSearchElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface SearchDropdown {
         /**
-          * The first name
+          * @default ''
          */
-        "first"?: string;
+        "anchorSelector"?: string;
         /**
-          * The last name
+          * @default false
          */
-        "last"?: string;
+        "isOpen"?: boolean;
+        "onDropdownClose"?: (event: SearchDropdownCustomEvent<void>) => void;
+        "onResultSelect"?: (event: SearchDropdownCustomEvent<SearchResult>) => void;
         /**
-          * The middle name
+          * @default ''
          */
-        "middle"?: string;
+        "query"?: string;
+        /**
+          * @default []
+         */
+        "results"?: Array<SearchResult>;
+    }
+    interface SearchFilter {
+        /**
+          * @default []
+         */
+        "filters"?: FilterOption[];
+        "onFilterChange"?: (event: SearchFilterCustomEvent<FilterOption | null>) => void;
+    }
+    interface SearchInput {
+        "onInputChange"?: (event: SearchInputCustomEvent<string>) => void;
+        "onInputClear"?: (event: SearchInputCustomEvent<void>) => void;
+        /**
+          * @default 'Search...'
+         */
+        "placeholder"?: string;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
+    interface SmartSearch {
+        /**
+          * @default 300
+         */
+        "debounceMs"?: number;
+        /**
+          * @default []
+         */
+        "filters"?: FilterOption[];
+        /**
+          * @default 10
+         */
+        "maxResults"?: number;
+        "onSearchChange"?: (event: SmartSearchCustomEvent<SearchChangeEvent>) => void;
+        "onSearchClear"?: (event: SmartSearchCustomEvent<void>) => void;
+        "onSearchFilter"?: (event: SmartSearchCustomEvent<SearchFilterEvent>) => void;
+        "onSearchSelect"?: (event: SmartSearchCustomEvent<SearchSelectEvent>) => void;
+        /**
+          * @default 'Search...'
+         */
+        "placeholder"?: string;
+        /**
+          * @default []
+         */
+        "results"?: Array<SearchResult>;
+        /**
+          * @default 'light'
+         */
+        "theme"?: 'light' | 'dark';
     }
 
-    interface MyComponentAttributes {
-        "first": string;
-        "middle": string;
-        "last": string;
+    interface SearchDropdownAttributes {
+        "query": string;
+        "isOpen": boolean;
+        "anchorSelector": string;
+    }
+    interface SearchInputAttributes {
+        "placeholder": string;
+        "value": string;
+    }
+    interface SmartSearchAttributes {
+        "placeholder": string;
+        "theme": 'light' | 'dark';
+        "debounceMs": number;
+        "maxResults": number;
     }
 
     interface IntrinsicElements {
-        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "search-dropdown": Omit<SearchDropdown, keyof SearchDropdownAttributes> & { [K in keyof SearchDropdown & keyof SearchDropdownAttributes]?: SearchDropdown[K] } & { [K in keyof SearchDropdown & keyof SearchDropdownAttributes as `attr:${K}`]?: SearchDropdownAttributes[K] } & { [K in keyof SearchDropdown & keyof SearchDropdownAttributes as `prop:${K}`]?: SearchDropdown[K] };
+        "search-filter": SearchFilter;
+        "search-input": Omit<SearchInput, keyof SearchInputAttributes> & { [K in keyof SearchInput & keyof SearchInputAttributes]?: SearchInput[K] } & { [K in keyof SearchInput & keyof SearchInputAttributes as `attr:${K}`]?: SearchInputAttributes[K] } & { [K in keyof SearchInput & keyof SearchInputAttributes as `prop:${K}`]?: SearchInput[K] };
+        "smart-search": Omit<SmartSearch, keyof SmartSearchAttributes> & { [K in keyof SmartSearch & keyof SmartSearchAttributes]?: SmartSearch[K] } & { [K in keyof SmartSearch & keyof SmartSearchAttributes as `attr:${K}`]?: SmartSearchAttributes[K] } & { [K in keyof SmartSearch & keyof SmartSearchAttributes as `prop:${K}`]?: SmartSearch[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "search-dropdown": LocalJSX.IntrinsicElements["search-dropdown"] & JSXBase.HTMLAttributes<HTMLSearchDropdownElement>;
+            "search-filter": LocalJSX.IntrinsicElements["search-filter"] & JSXBase.HTMLAttributes<HTMLSearchFilterElement>;
+            "search-input": LocalJSX.IntrinsicElements["search-input"] & JSXBase.HTMLAttributes<HTMLSearchInputElement>;
+            "smart-search": LocalJSX.IntrinsicElements["smart-search"] & JSXBase.HTMLAttributes<HTMLSmartSearchElement>;
         }
     }
 }

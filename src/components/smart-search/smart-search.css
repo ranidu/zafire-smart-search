@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.smart-search {
+  /* Light theme defaults */
+  --search-bg: #ffffff;
+  --search-border: #e0e0e0;
+  --search-text: #333333;
+  --search-placeholder: #aaaaaa;
+  --search-icon-color: #999999;
+  --search-highlight: #1677ff;
+  --search-item-hover: #f5f5f5;
+  --search-dropdown-bg: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.smart-search--dark {
+  /* Dark theme overrides */
+  --search-bg: #1f1f1f;
+  --search-border: #444444;
+  --search-text: #f0f0f0;
+  --search-placeholder: #777777;
+  --search-icon-color: #888888;
+  --search-highlight: #4096ff;
+  --search-item-hover: #2a2a2a;
+  --search-dropdown-bg: #1f1f1f;
+}
+
+.anchor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}

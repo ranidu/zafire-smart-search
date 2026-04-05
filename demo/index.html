@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zafire Smart Search — Demo</title>
+  <script type="module" src="/build/zafire-smart-search.esm.js"></script>
+  <script nomodule src="/build/zafire-smart-search.js"></script>
+  <link rel="stylesheet" href="/demo.css" />
+</head>
+
+<body>
+  <div class="demo-page">
+
+    <!-- Header -->
+    <header class="demo-header">
+      <div class="demo-header__inner">
+        <div class="demo-header__brand">
+          <span class="demo-header__name">Zafire Smart Search</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle">
+          Dark Mode
+        </button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="demo-main">
+      <div class="demo-card">
+        <h2 class="demo-card__title">Smart Search</h2>
+        <p class="demo-card__subtitle">
+          Search across accounts, customers, and transactions
+        </p>
+
+        <!-- The component -->
+        <smart-search id="smartSearch" placeholder="Search banking entities..." debounce-ms="300" max-results="8"
+          theme="light"></smart-search>
+      </div>
+    </main>
+
+  </div>
+  <script src="/demo.js"></script>
+</body>
+
+</html>
