@@ -11,6 +11,7 @@ export default defineVitestConfig({
           name: 'unit',
           include: ['src/**/__tests__/**/*.unit.test.{ts,tsx}'],
           environment: 'stencil',
+          setupFiles: ['./vitest-setup.ts'],
         },
       },
       // Component browser tests - real browser via Playwright
