@@ -180,6 +180,80 @@ body.dark .event-log__entry {
   border-color: #2a2a2a;
 }
 
+/* Selected result */
+.selected-result {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selected-result__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selected-result__type {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1677ff;
+  background: #e6f4ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+body.dark .selected-result__type {
+  background: #1d3557;
+  color: #69b1ff;
+}
+
+.selected-result__badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: #555555;
+  background: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+body.dark .selected-result__badge {
+  background: #333333;
+  color: #aaaaaa;
+}
+
+.selected-result__title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.selected-result__subtitle {
+  font-size: 13px;
+  color: #999999;
+}
+
+.selected-result__meta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #777777;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.selected-result__meta-key {
+  color: #aaaaaa;
+}
+
+.selected-result__meta-value {
+  color: #555555;
+}
+
+body.dark .selected-result__meta-value {
+  color: #cccccc;
+}
+
 /* Code block */
 .demo-card--code {
   background: #1a1a2e;

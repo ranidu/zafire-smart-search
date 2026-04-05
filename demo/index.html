@@ -13,7 +13,6 @@
 <body>
   <div class="demo-page">
 
-    <!-- Header -->
     <header class="demo-header">
       <div class="demo-header__inner">
         <div class="demo-header__brand">
@@ -25,7 +24,6 @@
       </div>
     </header>
 
-    <!-- Main content -->
     <main class="demo-main">
       <div class="demo-card">
         <h2 class="demo-card__title">Smart Search</h2>
@@ -33,9 +31,13 @@
           Search across accounts, customers, and transactions
         </p>
 
-        <!-- The component -->
         <smart-search id="smartSearch" placeholder="Search banking entities..." debounce-ms="300" max-results="8"
           theme="light"></smart-search>
+      </div>
+
+      <div class="demo-card" id="selectedCard" style="display:none;">
+        <h2 class="demo-card__title">Selected Result</h2>
+        <div class="selected-result" id="selectedResult"></div>
       </div>
     </main>
 

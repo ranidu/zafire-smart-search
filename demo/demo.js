@@ -107,6 +107,34 @@ smartSearch.addEventListener('searchClear', () => {
   smartSearch.results = []
 })
 
+smartSearch.addEventListener('searchSelect', (e) => {
+  const result = e.detail?.result
+  if (!result) return
+
+  const selectedCard = document.getElementById('selectedCard')
+  const selectedResult = document.getElementById('selectedResult')
+
+  const metaEntries = Object.entries(result.metadata || {})
+    .map(([k, v]) => `<span class="selected-result__meta-key">${k}:</span> <span class="selected-result__meta-value">${v}</span>`)
+    .join('')
+
+  selectedResult.innerHTML = `
+    <div class="selected-result__row">
+      <span class="selected-result__type">${result.type}</span>
+      <span class="selected-result__badge">${result.badge ?? ''}</span>
+    </div>
+    <div class="selected-result__title">${result.title}</div>
+    <div class="selected-result__subtitle">${result.subtitle ?? ''}</div>
+    ${metaEntries ? `<div class="selected-result__meta">${metaEntries}</div>` : ''}
+  `
+  selectedCard.style.display = ''
+})
+
+smartSearch.addEventListener('searchClear', () => {
+  const selectedCard = document.getElementById('selectedCard')
+  selectedCard.style.display = 'none'
+})
+
 themeToggle.addEventListener('click', () => {
   const isDark = document.body.classList.toggle('dark')
   smartSearch.theme = isDark ? 'dark' : 'light'
